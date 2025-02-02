@@ -1,0 +1,83 @@
+# User Manual
+
+This manual provides a comprehensive overview of the Revised Optimized Model for Cosmological Magnetic Fields, including a detailed description of the model architecture, each of its modules, and instructions on how to interpret simulation results.
+
+## 1. Overview of the Model Architecture
+
+The model is composed of several integrated modules that work together to simulate the evolution of cosmological magnetic fields:
+- **Subgrid Module:** Models the turbulent amplification of magnetic fields on sub-kiloparsec scales using an LES-MHD approach.
+- **Astrophysical Feedback Module:** Implements a nonlinear model to simulate the injection and removal of magnetic energy due to energetic events such as supernovae and AGN jets.
+- **Reconnection Module:** Utilizes a hybrid approach combining MHD corrections with PIC 3D simulations to handle collisionless and relativistic reconnection processes, with an extension into ultra-relativistic regimes (UltraUltraRel).
+- **Advanced Chemical Network:** Incorporates a detailed chemical network that includes species such as H, He, H₂, metals, and dust, and has been updated to include complex molecular reactions (e.g., formation and destruction of molecules like CO, H₂O, organic molecules).
+
+## 2. Detailed Module Descriptions
+
+### 2.1 Subgrid Module
+- **Purpose:**  
+  To simulate the amplification of magnetic fields on scales that are too small to be resolved directly.
+- **Key Parameters:**
+  - `p`: Exponent controlling the scale-dependence of the amplification.
+  - `γ` (gamma): Compression factor.
+  - `C(t)`: Temporal correction function ensuring convergence at each simulation time step.
+- **Usage:**  
+  Adjust these parameters in the configuration file to match your simulation requirements.
+
+### 2.2 Astrophysical Feedback Module
+- **Purpose:**  
+  To account for the energy injection and removal due to supernovae, AGN jets, and other energetic events.
+- **Key Parameters:**
+  - `λ_in(F,t)`: Injection coefficient.
+  - `λ_out(F,t)`: Removal coefficient.
+  - `ν`: Nonlinearity parameter controlling the feedback dynamics.
+- **Usage:**  
+  Calibration of these parameters is crucial. Refer to the replication guide for suggested values based on observational data.
+
+### 2.3 Reconnection Module
+- **Purpose:**  
+  To model the process of magnetic reconnection in both standard and ultra-relativistic regimes.
+- **Key Parameters:**
+  - `α(R,Γ)` and `β(R,Γ)`: Functions that determine the scaling of reconnection processes.
+  - `ξ` and `δ_NL(R,Γ)`: Parameters for the nonlinear terms.
+- **Usage:**  
+  These parameters have been derived and validated through PIC 3D simulations. Adjust them only if necessary and consult the replication guide for details.
+
+### 2.4 Advanced Chemical Network
+- **Purpose:**  
+  To simulate the chemical evolution of the plasma, including the formation and destruction of complex molecules.
+- **Key Features:**
+  - Includes species such as H, He, H₂, metals, and dust.
+  - Updated to incorporate complex molecular reactions (e.g., formation of CO, H₂O, organic molecules; dissociation processes in high-radiation environments).
+  - Dynamically defines the collisionless threshold `ρ_c` based on the chemical composition.
+- **Usage:**  
+  Set the chemical parameters in the configuration file according to your simulation scenario.
+
+## 3. Running the Model
+
+- **Execution:**  
+  Run the main simulation script as described in the [Replication Guide](./replication_guide.md).
+- **Monitoring:**  
+  Monitor the output logs and verify that the simulation progresses as expected.
+- **Post-Processing:**  
+  Use the provided analysis scripts (e.g., Jupyter Notebooks in the `examples/` folder) to visualize and interpret the simulation results.
+
+## 4. Interpreting the Results
+
+- **Output Data:**
+  - Simulation results are stored in the `data/simulation_results/` directory.
+  - Key outputs include power spectra, spatial distributions of the magnetic field, and Faraday rotation maps.
+- **Analysis:**
+  - Compare the simulation outputs with observational data to assess the accuracy of the model.
+  - Use the analysis tools provided to examine the effects of different parameters on the evolution of the magnetic field.
+
+## 5. Troubleshooting
+
+- **Common Issues:**
+  - Check the configuration files for parameter consistency if the simulation does not converge.
+  - Ensure all dependencies are correctly installed and that the computational environment meets the required specifications.
+- **Further Help:**
+  - Refer to the [Replication Guide](./replication_guide.md) for detailed setup instructions.
+  - For unresolved issues, please open an issue on the repository's GitHub page or contact the project maintainers.
+
+---
+
+By following this user manual, you should have a clear understanding of the model's architecture, how each module functions, and how to interpret the simulation outputs. For further details, consult the additional documentation provided in this repository.
