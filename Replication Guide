@@ -1,0 +1,69 @@
+# Replication Guide
+
+This document provides a detailed explanation on how to replicate the Revised Optimized Model for Cosmological Magnetic Fields. It covers the following aspects:
+
+## 1. Setting Up the Computational Environment
+
+- **Hardware Requirements:**
+  - High-Performance Computing (HPC) system or cluster with parallel processing capabilities (multi-core CPUs; GPUs if applicable).
+- **Software Requirements:**
+  - Operating System: Linux (preferred) or a compatible environment.
+  - Compilers: C/C++/Fortran (if using compiled code).
+  - Scripting: Python 3.x.
+  - Required Libraries: MPI, OpenMP, BLAS, LAPACK, NumPy, SciPy, Matplotlib, etc.
+- **Installation:**
+  - Clone the repository:
+    ```bash
+    git clone https://github.com/YourUsername/RevisedOptimizedMagnetogenesisModel.git
+    cd RevisedOptimizedMagnetogenesisModel
+    ```
+  - Install Python dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+  - If applicable, compile the code:
+    ```bash
+    make
+    ```
+
+## 2. Detailed Configuration of Simulation Parameters
+
+- **Input Files:**
+  - The configuration files (e.g., `config/simulation_config.json`) contain parameters for each module:
+    - **Subgrid Module:** Set the values for parameters such as `p`, `γ` (gamma), and define the temporal correction function `C(t)`.
+    - **Feedback Module:** Configure the injection and removal coefficients (`λ_in(F,t)` and `λ_out(F,t)`) as well as the nonlinearity parameter `ν`.
+    - **Reconnection Module:** Specify the functions `α(R,Γ)`, `β(R,Γ)`, the scaling factor `ξ`, and the nonlinear term `δ_NL(R,Γ)`.
+    - **Chemical Network:** Input the parameters for H, He, H₂ and include the new parameters for the complex molecular reactions (e.g., formation and destruction rates of CO, H₂O, organic molecules).
+- **Initial Conditions:**
+  - Define the simulation box dimensions, boundary conditions, initial and final redshifts, and any other necessary physical parameters.
+
+## 3. Step-by-Step Instructions for Running Simulations and Analyzing Data
+
+1. **Launch the Simulation:**
+   - Run the simulation using the provided script. For example:
+     ```bash
+     bash examples/run_simulation.sh
+     ```
+     or, if using Python:
+     ```bash
+     python code/main.py --config config/simulation_config.json
+     ```
+2. **Monitoring:**
+   - The simulation output will be saved in the `data/simulation_results/` directory. Monitor the logs to check for convergence and any potential errors.
+3. **Post-Processing and Data Analysis:**
+   - Use the provided Jupyter Notebook (`examples/analysis_notebook.ipynb`) to analyze the simulation results. The notebook includes scripts to generate power spectra, spatial distribution plots, and Faraday rotation maps.
+4. **Validation:**
+   - Compare your simulation outputs with the reference results provided in the documentation to ensure that the model replicates correctly.
+   - Follow the steps outlined in this guide to run convergence tests and benchmarking as described in the main documentation.
+
+## 4. Troubleshooting and FAQs
+
+- **Common Issues:**
+  - If the simulation fails to converge, verify that the parameters in the configuration files are set within the recommended ranges.
+  - Check that all dependencies are correctly installed and that your HPC environment meets the hardware requirements.
+- **Further Assistance:**
+  - For any issues not covered in this guide, please refer to the [User Manual](./user_manual.md) or open an issue on the GitHub repository.
+
+---
+
+By following this replication guide, you should be able to set up your environment, configure the simulations properly, run the model, and analyze the results to replicate our findings accurately.
