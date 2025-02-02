@@ -1,0 +1,88 @@
+{
+  "subgrid_module": {
+    "p": 0.4,
+    "gamma": 1.05,
+    "C_t": "1.0"  
+    // In questo esempio, "C_t" è un valore costante; in pratica potrebbe essere definito come una funzione o un array di valori calcolati ad ogni time-step.
+  },
+  "feedback_module": {
+    "lambda_in": 0.3,
+    "lambda_out": 0.2,
+    "nu": 1.5
+  },
+  "reconnection_module": {
+    "alpha": 0.02,
+    "beta": 0.03,
+    "xi": 0.1,
+    "delta_NL": 1.0
+    // "delta_NL" rappresenta il termine non lineare, qui semplificato come valore costante.
+  },
+  "chemical_network": {
+    "H": {
+      "neutral": 1.0,
+      "ionized": 0.0
+    },
+    "He": {
+      "neutral": 1.0,
+      "ionized": 0.0
+    },
+    "H2": {
+      "formation_rate": 1.0e-3,
+      "destruction_rate": 1.0e-4
+    },
+    "complex_molecules": {
+      "CO": {
+        "formation_rate": 1.0e-3,
+        "destruction_rate": 5.0e-4
+      },
+      "H2O": {
+        "formation_rate": 5.0e-4,
+        "destruction_rate": 2.5e-4
+      },
+      "organic": {
+        "formation_rate": 1.0e-4,
+        "destruction_rate": 5.0e-5
+      }
+    },
+    "rho_c": 1e-27
+    // "rho_c" è la soglia collisionless dinamica, qui impostata a 1e-27 (unità dipendenti dal sistema utilizzato).
+  },
+  "global_settings": {
+    "box_dimensions": [100, 100, 100],
+    "boundary_conditions": "periodic",
+    "initial_redshift": 10,
+    "final_redshift": 5,
+    "time_step": 0.01
+  }
+}
+
+
+Spiegazione dei Valori Inseriti
+Subgrid Module:
+
+p = 0.4: Valore centrale derivato da analisi di sensitività, con una tolleranza di ±0.05.
+gamma = 1.05: Fattore di compressione anisotropa calibrato tramite simulazioni ad alta risoluzione.
+C_t = "1.0": In questo esempio, la funzione di correzione temporale è stata semplificata ad un valore costante, ma in una simulazione reale potrebbe essere definita in modo più dinamico.
+Feedback Module:
+
+lambda_in = 0.3 e lambda_out = 0.2: Valori scelti per rappresentare rispettivamente il tasso di iniezione e rimozione di energia magnetica in funzione degli eventi energetici.
+nu = 1.5: Espone la non linearità del processo di feedback.
+Reconnection Module:
+
+alpha = 0.02 e beta = 0.03: Funzioni di scaling che dipendono dalla scala spaziale R e dal fattore Lorentz Γ. In questo esempio sono valori costanti semplificati.
+xi = 0.1: Costante di scaling per il termine non lineare.
+delta_NL = 1.0: Termine non lineare che modella la riconnessione in regime ultra-relativistico, semplificato qui ad un valore costante.
+Chemical Network:
+
+Specifica i parametri per H e He, assumendo che in condizioni iniziali siano prevalentemente in forma neutra.
+H2: Include tassi di formazione e distruzione.
+Complex Molecules: Valori per la formazione e distruzione di molecole complesse (CO, H2O, molecole organiche) che migliorano la rappresentazione chimica in ambienti estremi.
+rho_c = 1e-27: Soglia collisionless definita dinamicamente in base alla composizione chimica.
+Global Settings:
+
+Box Dimensions: Impostato su un dominio di 100 unità per lato (le unità specifiche dipenderanno dal sistema di riferimento).
+Boundary Conditions: Periodiche.
+Redshift Range: Da 10 a 5, per simulare l'evoluzione in una fase critica dell'Universo.
+Time Step: 0.01, scelto per garantire la stabilità della simulazione.
+
+
