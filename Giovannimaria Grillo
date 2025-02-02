@@ -1,0 +1,22 @@
+RevisedOptimizedMagnetogenesisModel/
+├── README.md
+├── LICENSE
+├── docs/
+│   ├── user_manual.pdf         # Manuale utente dettagliato
+│   └── replication_guide.pdf   # Guida per la replica del modello
+├── code/
+│   ├── main.cpp                # Programma principale (o main.py se in Python)
+│   ├── subgrid_module.cpp      # Modulo per l’amplificazione subgrid
+│   ├── feedback_module.cpp     # Modulo per il feedback astrofisico
+│   ├── reconnection_module.cpp # Modulo per la riconnessione collisionless/relativistica
+│   ├── chemical_module.cpp     # Modulo per la rete chimica avanzata
+│   ├── simulation_setup.py     # Script per la configurazione e l’esecuzione delle simulazioni
+│   └── utils/                  # Altri script e librerie di supporto
+├── data/
+│   ├── simulation_results/     # Dati di output delle simulazioni
+│   │   └── results_001.dat
+│   └── observational_data/     # Campioni di dati osservativi (es. file FITS)
+│       └── LoTSS_sample.fits
+└── examples/
+    ├── run_simulation.sh       # Script di esempio per eseguire una simulazione
+    └── analysis_notebook.ipynb # Jupyter Notebook per analizzare i risultati
