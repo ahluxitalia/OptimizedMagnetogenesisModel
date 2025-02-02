@@ -27,14 +27,13 @@ For Python, install the required packages using:
 pip install -r requirements.txt
 For compiled languages, follow the instructions in INSTALL.md.
 Compile the Code (if necessary):
-Run:
 make
 or follow the instructions in INSTALL.md.
 
 How to Run
 To run an example simulation, you can use the provided script:
 Using Bash Script:
-bash examples/run_simulation.sh
+examples/run_simulation.sh
 Using Python:
 python code/main.py --config config/simulation_config.json
 Simulation outputs will be stored in the data/simulation_results/ directory.
@@ -45,9 +44,8 @@ For a detailed explanation on how to replicate the model, please refer to the Re
 Setting up the computational environment.
 Detailed configuration of simulation parameters.
 Step-by-step instructions for running simulations and analyzing data.
-User Manual
-A comprehensive user manual is available in the User Manual, which includes:
 
+Is available a User Manual, which includes:
 An overview of the model architecture.
 A description of each module (Subgrid, Feedback, Reconnection, and Chemical Network).
 Detailed instructions on how to interpret simulation results.
